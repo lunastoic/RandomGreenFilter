@@ -1,5 +1,5 @@
 let video;
-let charSet =  '     .:-=+*%@#';
+let charSet =  '     8516539234;';
 
 function setup() {
   createCanvas(640, 480);
@@ -23,10 +23,10 @@ function draw() {
       let b = video.pixels[index + 2];
 
       let brightness = (r + g + b) / 3;
-      let charIndex = int(map(brightness, 0, 255, charSet.length - 1, 0));
+      let charIndex = int(map(brightness, 0, 255, 0, charSet.length - 1));
       let char = charSet.charAt(charIndex);
 
-      fill(0, 0, 225); // Bright green color
+      fill(0, 800, 0); // Bright green color
       text(char, x * 8, y * 8);
     }
   }
