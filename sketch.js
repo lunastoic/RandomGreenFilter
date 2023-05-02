@@ -2,7 +2,6 @@ let video;
 let charSet = '     .:-=+*%@#';
 
 function setup() {
-  fullscreen(true);
   createCanvas(windowWidth, windowHeight);
   pixelDensity(1);
   video = createCapture(VIDEO);
@@ -42,4 +41,3 @@ function windowResized() {
   video.size(width / 20, height / 20);
   textSize(min(width, height) / 20);
 }
-
