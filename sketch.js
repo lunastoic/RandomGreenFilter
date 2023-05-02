@@ -1,5 +1,5 @@
 let video;
-let charSet =  '     8516539234;';
+let charSet =  '     123456789;';
 
 function setup() {
   createCanvas(640, 480);
