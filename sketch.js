@@ -1,19 +1,24 @@
 let video;
-let charSet =  '     .:-=+*%@#';
+let charSet = '     .:-=+*%@#';
 
 function setup() {
-  createCanvas(640, 480);
+  fullscreen(true);
+  createCanvas(windowWidth, windowHeight);
   pixelDensity(1);
   video = createCapture(VIDEO);
-  video.size(width / 8, height / 8);
+  video.size(width / 20, height / 20);
   video.hide();
-  textSize(12);
+  textSize(min(width, height) / 20);
   textFont('monospace');
+  textStyle(BOLD);
 }
 
 function draw() {
   background(0);
   video.loadPixels();
+
+  let scaleX = width / video.width;
+  let scaleY = height / video.height;
 
   for (let y = 0; y < video.height; y++) {
     for (let x = 0; x < video.width; x++) {
@@ -27,7 +32,14 @@ function draw() {
       let char = charSet.charAt(charIndex);
 
       fill(0, 255, 0); // Bright green color
-      text(char, x * 8, y * 8);
+      text(char, x * scaleX, y * scaleY);
     }
   }
 }
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  video.size(width / 20, height / 20);
+  textSize(min(width, height) / 20);
+}
+
