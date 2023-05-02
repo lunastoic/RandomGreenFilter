@@ -26,7 +26,7 @@ function draw() {
       let charIndex = int(map(brightness, 0, 255, charSet.length - 1, 0));
       let char = charSet.charAt(charIndex);
 
-      fill(135, 206, 235); // Bright green color
+      fill(195, 80, 80); // Bright green color
       text(char, x * 8, y * 8);
     }
   }
