@@ -1,23 +1,19 @@
 let video;
-let charSet = '     .:-=+*%@#';
+let charSet =  '     .:-=+*%@#';
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(640, 480);
   pixelDensity(1);
   video = createCapture(VIDEO);
-  video.size(width / 60, height / 60);
+  video.size(width / 8, height / 8);
   video.hide();
-  textSize(min(width, height) / 60);
+  textSize(12);
   textFont('monospace');
-  textStyle(BOLD);
 }
 
 function draw() {
   background(0);
   video.loadPixels();
-
-  let scaleX = width / video.width;
-  let scaleY = height / video.height;
 
   for (let y = 0; y < video.height; y++) {
     for (let x = 0; x < video.width; x++) {
@@ -27,17 +23,11 @@ function draw() {
       let b = video.pixels[index + 2];
 
       let brightness = (r + g + b) / 3;
-      let charIndex = int(map(brightness, 0, 255, charSet.length - 1, 0));
+      let charIndex = int(map(brightness, 0, 255, 0, charSet.length - 1));
       let char = charSet.charAt(charIndex);
 
       fill(0, 255, 0); // Bright green color
-      text(char, x * scaleX, y * scaleY);
+      text(char, x * 8, y * 8);
     }
   }
-}
-
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-  video.size(width / 60, height / 60);
-  textSize(min(width, height) / 60);
 }
