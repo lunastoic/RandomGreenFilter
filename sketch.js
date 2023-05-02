@@ -5,11 +5,11 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   pixelDensity(1);
   video = createCapture(VIDEO);
-  video.size(width / 40, height / 40);
+  video.size(width / 80, height / 80);
   video.hide();
-  textSize(min(width, height) / 40);
+  textSize(min(width, height) / 80);
   textFont('monospace');
-  textStyle(ITALIC);
+  textStyle(NORMAL);
 }
 
 function draw() {
@@ -38,6 +38,6 @@ function draw() {
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
-  video.size(width / 40, height / 40);
-  textSize(min(width, height) / 40);
+  video.size(width / 80, height / 80);
+  textSize(min(width, height) / 80);
 }
