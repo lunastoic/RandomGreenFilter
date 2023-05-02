@@ -9,7 +9,7 @@ function setup() {
   video.hide();
   textSize(min(width, height) / 40);
   textFont('monospace');
-  textStyle(BOLD);
+  textStyle(ITALIC);
 }
 
 function draw() {
@@ -27,7 +27,7 @@ function draw() {
       let b = video.pixels[index + 2];
 
       let brightness = (r + g + b) / 3;
-      let charIndex = int(map(brightness, 0, 255, 0, charSet.length - 1));
+      let charIndex = int(map(brightness, 0, 255, charSet.length - 1, 0));
       let char = charSet.charAt(charIndex);
 
       fill(0, 255, 0); // Bright green color
