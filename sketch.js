@@ -1,5 +1,5 @@
 let video;
-let charSet =  '     123456789;';
+let charSet =  '     .:-=+*%@#';
 
 function setup() {
   createCanvas(640, 480);
