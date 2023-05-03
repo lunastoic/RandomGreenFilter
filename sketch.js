@@ -1,5 +1,6 @@
 let video;
-let charSet =  '     .:-=+*%@#';
+let charSet = '     .:-=+*%@#';
+let button;
 
 function setup() {
   createCanvas(640, 480);
@@ -9,6 +10,11 @@ function setup() {
   video.hide();
   textSize(12);
   textFont('monospace');
+  
+  // Create button and add a callback function
+  button = createButton('Switch Camera');
+  button.position(10, 490);
+  button.mousePressed(switchCamera);
 }
 
 function draw() {
@@ -31,3 +37,18 @@ function draw() {
     }
   }
 }
+
+function switchCamera() {
+  video.remove();
+  let constraints = {
+    video: {
+      facingMode: {
+        exact: video.elt.srcObject.getVideoTracks()[0].getSettings().facingMode === 'user' ? 'environment' : 'user',
+      },
+    },
+  };
+  video = createCapture(constraints);
+  video.size(width / 8, height / 8);
+  video.hide();
+}
+
